@@ -1,0 +1,23 @@
+{% load thumbnail %}
+
+{{ banner}}
+
+{{ banner.get_image}}
+<div class="col-md-4">
+			<div class="card bg-dark">
+
+    {% thumbnail banner.get_image size as im %}
+        <img class="card-img opacity {{ banner.slug }} banner" 
+          width="{{ width }}" height="{{ height }}"
+          src="{{ im.url }}" alt="{{ object.title }}" 
+        />
+        <div class="card-img-overlay text-white">
+			    <h5 class="card-title">Apple Devices</h5>
+			    <p class="card-text">This is a wider card with text below</p>
+			    <a href="{{ banner.link }}" class="btn btn-light">Discover</a>
+			  </div>
+    {% empty %}
+        <!-- Provide banner image --> Para graph
+    {% endthumbnail %}
+</div>
+</div>
