@@ -1,0 +1,170 @@
+/* =====================================
+Template Name: Eshop
+Author Name: Naimur Rahman
+Author URI: http://www.wpthemesgrid.com/
+Description: Eshop - eCommerce HTML5 Template.
+Version:1.0
+========================================*/
+/*======================================
+[ CSS Table of contents ]
+01. Preloader CSS
+02. Header CSS
+	+ Logo
+	+ Category Menu
+	+ Main Menu
+03. Hero Area CSS
+04. Small Banner CSS
+05. Medium Banner CSS
+06. Single Product CSS
+07. Shop Sidebar CSS
+08. Shop Single CSS
+09. Shop Home List CSS
+10. Cart CSS
+11. Checkout CSS
+12. Login & Register CSS
+13. Cowndown CSS
+14. Shop Services CSS
+15. Newslatter CSS
+16. About Us CSS
+17. Team CSS
+18. Blog CSS
+	+ Blog Archive
+	+ Blog Sidebar
+	+ Blog Single
+19. Contact CSS
+20. 404 Error CSS
+21. Footer CSS Dark blue #1c3481
+Light Blue #00baf2
+========================================*/
+
+/* CSSTerm.com Flyout CSS menu */
+
+#flyout_menu {
+	font-weight: 600;
+	width: 200px; }
+
+#flyout_menu ul, li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#flyout_menu ul li.hover,
+#flyout_menu ul li:hover { position: relative; z-index: 599; }
+
+#flyout_menu ul ul{
+	visibility: hidden;
+	position: absolute;
+	top: 100%;
+	left: 0;
+	z-index: 598;
+}
+
+#flyout_menu ul li:hover > ul { visibility: visible; }
+
+#flyout_menu ul ul { top: 0; left: 100%; }
+
+#flyout_menu span, #flyout_menu a {
+	display: inline-block;
+	font-size: 12px;
+	text-decoration: none; }
+
+#flyout_menu li { background: #1c3481; }
+#flyout_menu li:hover, #flyout_menu li.active { background: #1c3481; }
+
+#flyout_menu a {
+    color: #FFF;
+    line-height: 160%;
+    padding: 16px 8px 16px 28px;
+    width: 200px; }
+
+#flyout_menu ul ul li {
+	background: #00baf2;
+	border-bottom: 1px solid #1c3481;
+	border-left: 1px solid #1c3481;}
+
+#flyout_menu ul ul li:hover { background: #1c3481; }
+/* mini sub menu */
+
+.mini-submenu{
+  display:none;
+  background-color: rgba(0, 0, 0, 0);
+  border: 1px solid rgba(0, 0, 0, 0.9);
+  border-radius: 4px;
+  padding: 9px;
+  /*position: relative;*/
+  width: 42px;
+
+}
+
+.mini-submenu:hover{
+  cursor: pointer;
+}
+
+.mini-submenu .icon-bar {
+  border-radius: 1px;
+  display: block;
+  height: 2px;
+  width: 22px;
+  margin-top: 3px;
+}
+
+.mini-submenu .icon-bar {
+  background-color: #000;
+}
+
+#slide-submenu{
+  background: rgba(0, 0, 0, 0.45);
+  display: inline-block;
+  padding: 0 8px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+/* Preloader */
+.preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999999999;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  overflow: hidden;
+}
+.preloader-inner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  -moz-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+}
+.preloader-icon {
+  width: 100px;
+  height: 100px;
+  display: inline-block;
+  padding: 0px;
+}
+.preloader-icon span {
+  position: absolute;
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  border-radius: 100%;
+  background:#00baf2 !important;
+  -webkit-animation: preloader-fx 1.6s linear infinite;
+  animation: preloader-fx 1.6s linear infinite;
+}
+.preloader-icon span:last-child {
+  animation-delay: -0.8s;
+  -webkit-animation-delay: -0.8s;
+}
+@keyframes preloader-fx {
+  0% {transform: scale(0, 0); opacity:0.5;}
+  100% {transform: scale(1, 1); opacity:0;}
+}
+@-webkit-keyframes preloader-fx {
+  0% {-webkit-transform: scale(0, 0); opacity:0.5;}
+  100% {-webkit-transform: scale(1, 1); opacity:0;}
+}		visibility:hidden;
+}

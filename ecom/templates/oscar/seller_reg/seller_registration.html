@@ -1,0 +1,74 @@
+﻿{% extends "oscar/layout.html" %}
+
+
+{% load i18n %}
+{% load banner_tags %}
+{% load carousel_tags %}
+{% block title %}
+    {% trans 'Register' %} | {{ block.super }}
+{% endblock %}
+
+{% block breadcrumbs %}
+    <ul class="breadcrumb">
+        <li>
+            <a href="{{ homepage_url }}">{% trans 'Home' %}</a>
+        </li>
+        <li class="active">{% trans 'Register as seller' %}</li>
+    </ul>
+{% endblock %}
+
+{% block headertext %} {% trans "Hi!" %} <i> {{ request.user.get_full_name}} </i>
+    {% trans " Take a step towards easy way to take your business online." %} 
+     
+{% endblock %}
+
+{% block content %}
+   <div class="row">
+       <div class="container-fluid">
+    <div class="col-sm-12 register_form pl-0">
+
+
+            <p class="card-text" style="max-width: 400px">An easy way to make money online. <br> Register as seller with us and earn. Fill the form below and start earning.</p>
+            <a href="" class="btn btn-success rounded-pill">Learn more</a>
+
+
+     <div class="row">
+
+
+         <div class="col-md-6" style="margin-top: 10px" >
+
+            {% if not approved and is_taken and not rejected %}
+                <div class="alert alert-info">
+                  <strong>Info!</strong>
+                    Your request is under review, please wait till you are notified.
+                </div>
+             {% elif approved and is_taken  %}
+                <div class="alert alert-info">
+                  <strong>Info!</strong>
+                    Your request is <b>Approved</b>, please login via below URL .
+                </div>
+              {% elif rejected and is_taken  %}
+                <div class="alert alert-info">
+                  <strong>Info!</strong>
+                    Your request is <b>Rejected</b>, please proceed with correct details.
+                </div>
+            {% else %}
+                <form id="seller_register_form" method="post" class="form-horizontal" >
+
+                        {% csrf_token %}
+
+                        {{profile_form.as_ul }}
+                      <button class="btn-success" type="submit">Request Seller Profile</button>
+
+                </form>
+
+            {% endif %}
+        </div>
+
+       </div>
+        
+
+           </div>
+       </div>
+   </div>
+{% endblock content %}

@@ -1,0 +1,105 @@
+﻿
+{% extends "oscar/layout.html" %}
+
+
+{% load i18n %}
+
+{% block title %}
+    {% trans 'Register' %} | {{ block.super }}
+{% endblock %}
+
+{% block breadcrumbs %}
+    <ul class="breadcrumb">
+        <li>
+            <a href="{{ homepage_url }}">{% trans 'Home' %}</a>
+        </li>
+        <li class="active">{% trans 'Approve a seller.' %}</li>
+    </ul>
+{% endblock %}
+
+{% block headertext %}
+    {% trans "An easy way to make money online." %}
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script>
+        $(document).ready(function(){
+          $("form").submit(function(){
+            $.post("/api/admin/partners/", {name: "Rohit"}, function(result){
+              $("span").html(result);
+            });
+          });
+          
+        });
+        </script>
+     
+            
+        <div class="container">
+
+            {% if request.user.is_staff %}
+              <h2>Seller Details</h2>
+
+              <div class="list-group" style="margin-top:10px" >
+                <a href="#" class="list-group-item active">
+                  <h4 class="list-group-item-heading primary" id="seller">{{ object.seller_reg_title }} </h4>
+                  
+                </a>
+                <a href="#" class="list-group-item">
+                  <h4 class="list-group-item-heading">Name : </h4>
+                  <p class="list-group-item-text" id="gst">{{ object.seller_name }}</p>
+                </a>
+                <a href="#" class="list-group-item">
+                  <h4 class="list-group-item-heading">Email id : </h4>
+                  <p class="list-group-item-text">{{ object.email_id }}</p>
+                </a>
+                <a href="#" class="list-group-item">
+                  <h4 class="list-group-item-heading">GST Number : </h4>
+                  <p class="list-group-item-text" id="gst">{{ object.gst_number }}</p>
+                </a>
+                  <a href="#" class="list-group-item">
+                  <h4 class="list-group-item-heading">Phone number : </h4>
+                  <p class="list-group-item-text">{{ object.phone_number }}</p>
+                </a>
+                <a href="#" class="list-group-item">
+                  <h4 class="list-group-item-heading">Description : </h4>
+                  <p class="list-group-item-text">{{ object.bio }}</p>
+                </a>
+                <a href="#" class="list-group-item">
+                  <h4 class="list-group-item-heading">City :  </h4>
+                  <p class="list-group-item-text">{{ object.bio }}</p>
+                </a>
+                  <a href="#" class="list-group-item">
+                  <h4 class="list-group-item-heading">State :</h4>
+                  <p class="list-group-item-text">{{ object.state }}</p>
+                </a>
+              </div>
+            <div class=" row  "><div class="col-md-3">
+                      <form action="/sellerreg/reject_seller/{{object.id}}" method="post">
+                        {% csrf_token %}
+
+                        <input type="submit"  name="Reject" class="btn btn-danger" value="Reject">
+                    </form>
+                   </div>
+                   <div class="col-md-3">
+                   <form action="/sellerreg/approve_seller/{{object.id}}" method="post">
+                        {% csrf_token %}
+
+                        <input  class="btn btn-success" name="Approve" type="submit" value="Approve">
+                    </form>
+                   </div>
+
+                </div>
+            {% else %}
+       <div class="list-group">
+       
+        You are not authorized to view this page.
+        
+        </div>
+ {%endif%}
+            </div>
+    
+        
+   
+{% endblock content %}

@@ -1,0 +1,124 @@
+{% extends "oscar/base.html" %}
+{% load static %}
+{% load carousel_tags %}
+{% load banner_tags %}
+
+
+{% block styles %}
+    {% comment %}
+        If you are developing Oscar's CSS, or overriding Oscar's CSS
+        files in your project, then set OSCAR_USE_LESS = True in your
+        settings file. This will enable the on-the-fly less compiler.
+    {% endcomment %}
+    {% if use_less %}
+
+
+        <link rel="stylesheet" type="text/css" href="{% static "oscar/css/styles.css" %}" />
+        <link rel="stylesheet" type="text/css" href="{% static "oscar/css/custom.css" %}" />
+        <link rel="stylesheet/less" type="text/css" href="{% static "oscar/less/styles.less" %}" />
+
+    {% else %}
+        <link rel="stylesheet" type="text/css" href="{% static "oscar/css/styles.css" %}" />
+        <link rel="stylesheet" type="text/css" href="{% static "oscar/css/custom.css" %}" />
+        <!-- Bootstrap -->
+
+	<!-- Magnific Popup -->
+    <link rel="stylesheet" href="{% static "oscar/css/css/magnific-popup.min.css" %}">
+	<!-- Font Awesome -->
+    <link rel="stylesheet" href="{% static "oscar/css/css/font-awesome.css" %}">
+
+	<!-- Themify Icons -->
+    <link rel="stylesheet" href="{% static "oscar/css/css/animate.css">
+
+	<!-- Eshop StyleSheet -->
+	<link rel="stylesheet" href="{% static "oscar/css/style.css" %}">
+
+    {% endif %}
+{% endblock %}
+<style>
+.section-navbanner {
+    background-color: #162a70;
+}
+</style>
+{% block layout %}
+    {# Top-horizontal bar with account, notifictions, dashboard links #}
+    {% include "oscar/partials/nav_accounts.html" %}
+
+    {# Site logo/title, mini-basket, browse dropdown and searchbox #}
+
+    <header class="header container-fluid">
+        <div class="page_inner" style="background-image: url({% static '/oscar/bannerHome.jpg' %})">
+
+            <div class="row ">
+
+                {# Mini-basket wrapped in a block so some templates can now display it #}
+                {% block mini_basket %}{% include "oscar/partials/mini_basket.html" %}{% endblock %}
+            </div>
+        </div>
+
+    </header>
+    <!-- Header -->
+
+    {# Main content of page - other layout templates may override this block #}
+    {% block content_wrapper %} 
+        <div class="container-fluid page">
+            <div class="page_inner">
+                {% block breadcrumbs %}{% endblock %}
+                {% block header %}
+                    <div class="page-header action">
+                        <h1>{% block headertext %}{% endblock %}</h1>
+                    </div>
+                {% endblock %}
+                {% include "oscar/partials/alert_messages.html" %}
+                {% block subnavigation %}{% endblock %}
+                <div class="content">
+
+                    {% block subheader %}{% endblock subheader %}
+
+                    {# Div exists for AJAX updates to entire content section #}
+                    <div id="content_inner">{% block content %}{% endblock %}</div>
+
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+
+
+    {% include "oscar/partials/footer.html" %}
+{% endblock %}
+
+{% block cdn_scripts %}
+  {{ block.super }}
+  {% if use_less and debug %}
+    {# Load the on-the-fly less compiler. Never do this in production. #}
+    <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.9.0/less.min.js"></script>
+  {% endif %}
+{% endblock %}
+
+{# Local scripts #}
+{% block scripts %}
+    {{ block.super }}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <!-- Twitter Bootstrap -->
+    <script src="{% static "oscar/js/bootstrap3/bootstrap.min.js" %}"></script>
+    <!-- Oscar -->
+    <script src="{% static "oscar/js/oscar/ui.js" %}"></script>
+    	<!-- Jquery -->
+    <script src="{% static "oscar/js/js/jquery.min.js" %}"></script>
+
+	<!-- Nice Select JS -->
+	<script src="{% static "oscar/js/js/nicesellect.js" %}"></script>
+	<!-- Active JS -->
+	<script src="{% static "oscar/js/js/active.js" %}"></script>
+
+{% endblock %}
+
+{% block extrascripts %}
+    {% include "oscar/partials/extrascripts.html" %}
+    {{ block.super }}
+{% endblock %}
+
+{% block onbodyload %}
+    {{ block.super }}
+    oscar.init();
+{% endblock %}

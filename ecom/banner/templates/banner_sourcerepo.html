@@ -1,0 +1,62 @@
+{% load thumbnail %}
+<div class="row">
+<div class="col-md-6">
+    <div class="card bg-dark">
+
+    {% thumbnail banner.get_image size as im %}
+        <img class="card-img opacity {{ banner.slug }} banner"
+          width="{{ width }}" height="{{ height }}"
+          src="{{ im.url }}" alt="{{ object.title }}"
+        />
+        <div class="card-img-overlay text-white">
+			    <h5 class="card-title">{{ banner.title }}</h5>
+			    <p class="card-text">{{ banner.desc }}</p>
+			    <a href="{{ banner.link }}" class="btn btn-light">{{ banner.cta_text }}</a>
+			  </div>
+    {% empty %}
+        <!-- Provide banner image --> Para graph
+    {% endthumbnail %}
+
+</div>
+</div>
+	</div>
+<div class="row"><div class="col-md-6">
+					<div class="single-banner">
+                         {% thumbnail banner.get_image size as im %}
+						<img class="card-img opacity {{ banner.slug }} banner"
+                              width="{{ width }}" height="{{ height }}"
+                              src="{{ im.url }}" alt="{{ object.title }}">
+						<div class="card-img-overlay text-white">
+							<p>{{ banner.title }}</p>
+							<h3>Summer travel <br> collection</h3>
+                            <p class="card-text">{{ banner.desc }}</p>
+							<a href="{{ banner.link }}">{{ banner.cta_text }}</a>
+						</div>
+                        {% empty %}
+                            <!-- Provide banner image --> Para graph
+                        {% endthumbnail %}
+					</div>
+				</div>
+
+
+
+
+
+</div>
+
+<div class="row">
+	<div class="col-md-6 card bg-dark">
+		 {% thumbnail banner.get_image size as im %}
+        <img class="card-img opacity {{ banner.slug }} banner"
+                              width="{{ width }}" height="{{ height }}"
+                              src="{{ im.url }}" alt="{{ object.title }}">
+        <div class="text card-img-overlay text-white">
+            <p class="card-text">{{ banner.desc }}</p>
+							<a href="{{ banner.link }}">{{ banner.cta_text }}</a>
+        </div>
+		{% empty %}
+                            <!-- Provide banner image --> Para graph
+                        {% endthumbnail %}
+    </div>
+
+</div>

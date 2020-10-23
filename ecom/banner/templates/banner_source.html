@@ -1,0 +1,41 @@
+{% load thumbnail %}
+<div class="row">
+{% if banner.img_only  %}
+    {% thumbnail banner.get_image size as im %}
+        <img class="img-responsive {{ banner.slug }} banner"
+          width="{{ banner.width }}" height="{{ banner.height }}"
+          src="{{ im.url }}" alt="{{ object.title }}"
+        />
+
+    {% empty %}
+        <!-- Provide banner image -->
+    {% endthumbnail %}
+
+{% endif %}
+    {% if not banner.img_only  %}
+<div class="col-md-6">
+    <div class="card bg-dark">
+
+    {% thumbnail banner.get_image size as im %}
+        <img class="card-img {{ banner.slug }} banner"
+          width="{{ banner.width }}" height="{{ banner.height }}"
+          src="{{ im.url }}" alt="{{ object.title }}"
+        />
+        {% if banner.title  %}
+        <div class="card-img-overlay text-white">
+			    <h3 class="card-title">{{ banner.title }}</h3>
+			    <p class="card-text">{{ banner.desc }}</p>
+               {% if banner.cta_text and banner.link %}
+			    <a href="{{ banner.link }}" class="btn btn-light">{{ banner.cta_text }}</a>
+               {% endif %}
+			  </div>
+        {% endif %}
+    {% empty %}
+        <!-- Provide banner image --> Para graph
+    {% endthumbnail %}
+
+     </div>
+    </div>
+
+    {% endif %}
+</div>
