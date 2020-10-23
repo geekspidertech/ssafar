@@ -151,18 +151,18 @@ WSGI_APPLICATION = 'ecom.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        #'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'data.local',
-        'USER': '',
-        'PASSWORD': '',
+        #'ENGINE': 'django.db.backends.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        #'NAME': 'data.local',
+        #'USER': '',
+        #'PASSWORD': '',
         
-        #'NAME': 'dbrpgduhvpm3b',
-        #'USER': 'lyuzssimprghbw',
-        #'PASSWORD': 'ffe7747b0f5b3f5196f674a24a755c960966b572bdeaa66cd7f9dbced9290f0c',
-        #'HOST': 'ec2-176-34-97-213.eu-west-1.compute.amazonaws.com',
-        #'PORT': '5432',
-        #'ATOMIC_REQUESTS': True,
+        'NAME': 'dbrpgduhvpm3b',
+        'USER': 'lyuzssimprghbw',
+        'PASSWORD': 'ffe7747b0f5b3f5196f674a24a755c960966b572bdeaa66cd7f9dbced9290f0c',
+        'HOST': 'ec2-176-34-97-213.eu-west-1.compute.amazonaws.com',
+        'PORT': '5432',
+        'ATOMIC_REQUESTS': True,
     }
 }
 
