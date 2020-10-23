@@ -267,9 +267,6 @@ EMAIL_HOST_PASSWORD = 'Sameer@123'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
-OSCAR_DASHBOARD_NAVIGATION.append({
-'label': ('Payments'),
-'icon': 'icon-globe',
 
-})
+
 django_heroku.settings(locals())
